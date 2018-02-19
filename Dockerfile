@@ -1,3 +1,3 @@
-FROM moeiscool/docker-shinobi-framework
+FROM mariadb:latest
 
 ADD shinobi-framework.sql /docker-entrypoint-initdb.d
