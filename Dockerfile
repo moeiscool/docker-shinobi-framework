@@ -1,3 +1,7 @@
-FROM mysql:5.6
+FROM ubuntu:artful
 
-ADD shinobi-framework.sql /docker-entrypoint-initdb.d
+RUN apt update && \
+    apt install mariadb-server mariadb-client
+RUN mysql -e "source /framework.sql" || true
+
+EXPOSE 3306
