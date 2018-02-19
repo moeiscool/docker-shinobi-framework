@@ -8,15 +8,12 @@ WORKDIR /opt/sql
 RUN apt update -y
 
 #MariaDB Install
-COPY shinobi.sample.sqlite .
+COPY shinobi.sample.sqlite /opt/sql/shinobi.sample.sqlite
 RUN apt install sqlite3 libsqlite3-dev -y
 
 #create entrypoint file
-COPY docker-entrypoint.sh .
+COPY docker-entrypoint.sh /opt/sql/docker-entrypoint.sh
 RUN chmod -f +x ./*.sh
-
-#default SQL port
-EXPOSE 3306
 
 #run docker
 ENTRYPOINT ["/opt/sql/docker-entrypoint.sh" ]
